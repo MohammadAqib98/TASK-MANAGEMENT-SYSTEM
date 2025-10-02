@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager with Progress Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+            <h1 style="margin: 0; display: flex; align-items: center; gap: 10px;">
+                <img src="https://img.icons8.com/color/48/000000/todo-list.png" alt="Task Icon" style="height: 30px;">
+                Task Manager
+            </h1>
+            <button id="about-btn" class="header-action-btn">
+                About
+            </button>
+        </div>
+        
+        <div class="input-section">
+            <input type="text" id="task-input" placeholder="Enter a new task..." maxlength="100">
+            
+            <select id="priority-input">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+            </select>
+            
+            <input type="date" id="due-date-input">
+
+            <textarea id="task-notes-input" placeholder="Add notes or comments (optional)" rows="2"></textarea>
+            
+            <button id="add-task-btn">Add Task</button>
+        </div>
+
+        <div class="filter-section">
+            <button id="filter-all" class="active">All</button>
+            <button id="filter-active">Active</button>
+            <button id="filter-completed">Completed</button>
+            <button id="clear-completed-btn">Clear Completed</button>
+        </div>
+        
+        <div class="progress-section">
+            <h2 id="progress-text">Progress: 0 of 0 tasks completed (0%)</h2>
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <h2>Your Tasks</h2>
+        <ul id="task-list">
+            </ul>
+        
+    </div>
+
+    <div id="edit-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Edit Task Details</h3>
+            <span id="close-modal-btn" class="close-btn">&times;</span>
+
+            <form id="edit-form">
+                <label for="edit-task-text">Task:</label>
+                <input type="text" id="edit-task-text" required>
+
+                <label for="edit-priority">Priority:</label>
+                <select id="edit-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+
+                <label for="edit-due-date">Due Date:</label>
+                <input type="date" id="edit-due-date">
+
+                <label for="edit-notes">Notes:</label>
+                <textarea id="edit-notes" rows="4"></textarea>
+
+                <button type="button" id="save-edit-btn">Save Changes</button>
+                <button type="button" id="cancel-edit-btn">Cancel</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="about-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>About This Website</h3>
+            <span id="close-about-modal-btn" class="close-btn">&times;</span>
+            <p>This is a feature-rich, responsive <strong style="color: #b33030;;">Task Manager with Progress Tracker</strong> built using HTML, CSS, and vanilla JavaScript.</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Data Persistence (Local Storage)</li>
+                <li>Priority, Filtering, and Progress Tracking</li>
+                <li>Due Date Reminders & Completion Rewards</li>
+                <li>Full Edit Modal functionality.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

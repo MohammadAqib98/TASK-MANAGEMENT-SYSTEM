@@ -1,0 +1,279 @@
+/* Basic Reset and Typography */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body Background (Simple, clean background) */
+body {
+    background: #e9ecef;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Main Container (Attractive Border and Shadow) */
+.container {
+    position: relative;
+    background: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    
+    /* Attractive Double Border Effect */
+    border: 3px solid #007bff;
+    box-shadow: 0 0 0 6px #66aaff, 
+                0 8px 30px rgba(0, 0, 0, 0.2);
+    z-index: 10; 
+}
+/* --- Notes Styling (Ensure it breaks to a new line) --- */
+.task-notes-content {
+    background-color: #f7f7f7; 
+    border-top: 1px solid #eee; 
+    padding: 10px; 
+    margin-top: 10px;
+    
+    width: 100%; 
+    order: 4; 
+    
+    white-space: pre-wrap; 
+    font-size: 14px; /* Ensure readability */
+}
+
+h2 {
+    color: #555;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Header Action Button (For 'About') */
+.header-action-btn {
+    background: #f8f9fa;
+    border: 1px solid #ccc;
+    color: #007bff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+.header-action-btn:hover {
+    background-color: #e9ecef;
+}
+
+/* --- Input Section Styling --- */
+.input-section {
+    display: flex;
+    flex-wrap: wrap; 
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+#task-input { flex-grow: 1.5; min-width: 180px; }
+#priority-input, #due-date-input { flex-grow: 1; min-width: 100px; }
+
+#task-input, #priority-input, #due-date-input, #task-notes-input {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+#task-notes-input {
+    width: 100%;
+    resize: vertical;
+    order: 5;
+    margin-top: 10px;
+}
+
+#add-task-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    order: 6; 
+}
+
+/* Focus and Click Effects */
+#task-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+/* --- Progress Section Styling --- */
+.progress-section {
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.progress-bar-container { height: 15px; background-color: #e9ecef; border-radius: 8px; overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 0%; background-color: #28a745; transition: width 0.4s ease; }
+
+/* --- Filter Buttons Styling (Grouped Tabs) --- */
+.filter-section {
+    display: flex; justify-content: center; gap: 0; margin-top: 15px; margin-bottom: 20px; flex-wrap: wrap; 
+    border-top: 1px solid #f0f0f0; padding-top: 15px;
+}
+
+.filter-section button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 0; 
+    margin-right: -1px; 
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 14px;
+}
+.filter-section button.active { background-color: #007bff; color: white; border-color: #007bff; z-index: 2; }
+.filter-section button.active:hover { background-color: #007bff; }
+
+#filter-all { border-top-left-radius: 6px; border-bottom-left-radius: 6px; }
+#clear-completed-btn { border-top-right-radius: 6px; border-bottom-right-radius: 6px; }
+
+/* --- Task List Styling & Interactivity --- */
+.task-item {
+    display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
+    padding: 12px 15px; margin-bottom: 8px; background: #fff; border: 1px solid #ddd;
+    border-left: 5px solid #eee; border-radius: 8px; transition: all 0.3s;
+}
+
+.task-item:hover { box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08); transform: translateY(-2px); }
+.task-item.fade-out { opacity: 0; transform: translateX(100px); transition: all 0.5s ease-out; } 
+
+/* Priority Colors */
+.task-item[data-priority="high"] { border-left-color: #dc3545; }
+.task-item[data-priority="medium"] { border-left-color: #ffc107; }
+.task-item[data-priority="low"] { border-left-color: #007bff; }
+
+.task-content { display: flex; flex-grow: 1; padding-right: 15px; }
+.task-content > div { margin-left: 30px; } 
+
+.task-text { font-weight: 600; font-size: 17px; margin-top: 5px; display: block; }
+.completed .task-text { text-decoration: line-through; color: #a0a0a0; }
+
+.view-notes-btn { 
+    background: #f0f8ff; border: 1px solid #cceeff; color: #007bff; font-size: 12px;
+    padding: 3px 8px; border-radius: 4px; cursor: pointer; text-decoration: none; margin-left: 10px;
+    transition: all 0.2s;
+}
+.view-notes-btn:hover { background-color: #cceeff; color: #0056b3; }
+
+/* Action Button Styles */
+.task-actions { display: flex; align-items: center; }
+.task-actions button { padding: 6px 10px; font-size: 14px; }
+.delete-btn { background-color: #dc3545; color: white; }
+.edit-btn { background-color: #ffc107; color: #333; }
+.task-actions button::before { content: none !important; }
+
+/* --- MODAL STYLING (Pop-up Forms) --- */
+.modal-overlay {
+    position: fixed !important; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center;
+    z-index: 1000; 
+}
+
+.modal-content {
+    background-color: white; padding: 30px; border-radius: 12px; width: 90%; max-width: 450px; position: relative; 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Edit Modal Form Formatting Fix */
+#edit-form { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+#edit-form label { grid-column: 1 / 3; }
+#edit-task-text, #edit-notes { grid-column: 1 / 3; }
+
+#edit-form input[type="text"], #edit-form input[type="date"], #edit-form select, #edit-form textarea {
+    width: 100%; padding: 10px; border: 1px solid #999; border-radius: 6px; font-size: 16px;
+}
+
+#edit-priority { grid-column: 1 / 2; margin-bottom: 15px; }
+#edit-due-date { grid-column: 2 / 3; margin-bottom: 15px; }
+#save-edit-btn, #cancel-edit-btn { margin-top: 10px; padding: 10px 20px; }
+#save-edit-btn { grid-column: 1 / 2; background-color: #28a745; color: white; margin-right: 10px; }
+#cancel-edit-btn { background-color: #6c757d; color: white; }
+
+/* About Modal Attractive Styling */
+#about-modal .modal-content {
+    background: linear-gradient(135deg, #c2d4e6, #ffffff); 
+    border: 5px solid #0040ff;
+}
+
+/* --- Mobile Responsiveness (FINAL CORRECTED BLOCK) --- */
+
+@media (max-width: 600px) {
+    .container { 
+        padding: 15px; 
+    }
+    
+    /* Input Stacking */
+    .input-section { 
+        flex-direction: column; 
+        gap: 10px; 
+    }
+    #task-input, #priority-input, #due-date-input, #task-notes-input, #add-task-btn { 
+        width: 100% !important; 
+    }
+    
+    /* Action Buttons Mobile Fix: Restore Text and Icons Together */
+    
+    /* Task Content*/
+    .task-content {
+        width: 100%; 
+        min-width: 0;
+        padding-right: 5px;
+        flex-wrap: wrap; 
+    }
+    
+    /* Action Buttons: Position them to the far right of the task item */
+    .task-actions { 
+        display: flex;
+        flex-direction: row; 
+        align-items: center; 
+        width: auto; 
+        margin-left: auto; 
+        order: -1; 
+        gap: 5px; 
+    }
+
+    /* CRITICAL FIX: Restore Text and ICON */
+    .task-actions button { 
+        width: auto;
+        height: auto;
+        font-size: 13px; 
+        padding: 5px 8px; 
+    }
+    
+    /* Show Icon AND Text Together */
+    .edit-btn::before { 
+        content: '✎ '; /* Icon + space */
+        font-size: 13px; 
+        color: #333; 
+    }
+    
+    .delete-btn::before { 
+        content: '🗑️ '; /* Icon + space */
+        font-size: 13px; 
+        color: white; 
+    }
+    
+    /* Ensure the checkbox and text align */
+    .task-content > div { 
+        margin-left: 20px !important; 
+    }
+}
